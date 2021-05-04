@@ -8,6 +8,8 @@ Decrypt::Decrypt(char* _openFileName, char* _writeFileName)
 
 Decrypt::~Decrypt()
 {
+    delete ifsFile;
+    delete ofsFile;
 }
 
 bool Decrypt::OpenFile()
@@ -16,6 +18,8 @@ bool Decrypt::OpenFile()
 
     if (!ifsFile)
     {
+        cout << "ファイルが開けませんでした。" << endl;
+
         return false;
     }
 
@@ -78,8 +82,6 @@ void Decrypt::AllWriteDecrypt()
 
 void Decrypt::Decode(char* dst)
 {
-    //暗号鍵
-    char cipherBlockTemp[Block];
 
     memset(cipherBlockTemp, 'S', Block);
 

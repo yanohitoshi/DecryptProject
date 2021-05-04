@@ -48,5 +48,9 @@ private:
 	//ˆÃ†ƒuƒƒbƒN
 	char decodeBlock[Block];
 
+	//ˆÃ†Œ®
+	char cipherBlockTemp[Block];
+
+
 };
 
