@@ -23,6 +23,7 @@ enum ArgumentName
 */
 bool ChackArgument(int _count, char* argv, bool _isAbridgementOption);
 
+
 int main(int argc, char* argv[])
 {
     // コマンドライン引数が空でないかチェック
@@ -102,28 +103,32 @@ int main(int argc, char* argv[])
         // 復号化クラスのポインタ
         Decrypt* decrypt;
 
-        // 入力が先に来ていたら
+        // 入力が先に来ていたら入力ファイルネームを先に渡す
         if (isFirstInput)
         {
             // 省略されていたら
             if (isAbridgementOption)
             {
+                // 省略された形で引数にファイルネームを渡す
                 decrypt = new Decrypt(argv[SECOND], argv[THIRD]);
             }
             else // 省略されていなかったら
             {
+                // 省略されていない形で引数にファイルネームを渡す
                 decrypt = new Decrypt(argv[SECOND], argv[FOURTH]);
             }
         }
-        else
+        else // 出力が先に来ていたら入力ファイルネームを先に渡す
         {
             // 省略されていたら
             if (isAbridgementOption)
             {
+                // 省略された形で引数にファイルネームを渡す
                 decrypt = new Decrypt(argv[THIRD], argv[SECOND]);
             }
             else // 省略されていなかったら
             {
+                // 省略されていない形で引数にファイルネームを渡す
                 decrypt = new Decrypt(argv[FOURTH], argv[SECOND]);
             }
         }
@@ -159,11 +164,10 @@ int main(int argc, char* argv[])
             // ポインタの後処理
             delete decrypt;
 
+            // 終了
             return 0;
         }
     }
-
-
 }
 
 bool ChackArgument(int _count, char* _argv, bool _isAbridgementOption)
